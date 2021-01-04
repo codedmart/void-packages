@@ -1,0 +1,35 @@
+# Template file for 'ncurses5-compat-libs'
+pkgname=ncurses5-compat-libs
+_pkgname=ncurses
+version=6.1
+revision=1
+wrksrc=${_pkgname}-${version}
+hostmakedepends=""
+makedepends=""
+depends="glibc libgcc"
+short_desc="System V Release 4.0 curses emulation library, ABI 5"
+maintainer="Brandon Martin <brandon@codedmart.com>"
+license="MIT"
+homepage="http://invisible-island.net/ncurses/ncurses.html"
+distfiles="https://ftp.gnu.org/pub/gnu/ncurses/ncurses-${version}.tar.gz"
+checksum=aa057eeeb4a14d470101eff4597d5833dcef5965331be3528c08d99cebaa0d17
+
+do_build() {
+  ./configure --prefix=/usr --mandir=/usr/share/man \
+    --with-shared --with-normal --without-debug --without-ada --enable-widec \
+    --disable-pc-files --with-cxx-binding --with-cxx-shared --with-abi-version=5
+  make
+}
+
+do_install() {
+  make DESTDIR="${PKGDESTDIR}" install.libs
+  vinstall COPYING 644 usr/share/licenses/${pkgname} LICENSE
+  rm -rf "${PKGDESTDIR}/usr/include/" "${PKGDESTDIR}/usr/lib/pkgconfig" \
+    "${PKGDESTDIR}"/usr/lib/*.so
+
+  for lib in ncurses ncurses++ form panel menu; do
+    ln -s /usr/lib/lib${lib}w.so.5 "${PKGDESTDIR}/usr/lib/lib${lib}.so.5"
+  done
+  ln -s /usr/lib/libncurses.so.5 "${PKGDESTDIR}/usr/lib/libtinfo.so.5"
+  ln -s /usr/lib/libncurses.so.5 "${PKGDESTDIR}/usr/lib/libtic.so.5"
+}

@@ -1,0 +1,19 @@
+# Template file for 'stripe-cli'
+pkgname=stripe-cli
+version=1.5.5
+revision=1
+archs="x86_64"
+hostmakedepends=""
+depends=""
+create_wrksrc=yes
+short_desc="A command-line tool for Stripe"
+maintainer="Brandon Martin <brandon@codedmart.com>"
+license="Apache"
+homepage="https://stripe.com/docs/stripe-cli"
+distfiles="https://github.com/stripe/stripe-cli/releases/download/v${version}/stripe_${version}_linux_x86_64.tar.gz"
+checksum=92cb3b72e2d2d86ed9fce281461eff58d21c556f743299618f77a5c13859e8a3
+repository="nonfree"
+
+do_install() {
+  vbin stripe
+}

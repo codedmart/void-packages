@@ -1,0 +1,30 @@
+# Template file for 'insomnia'
+pkgname=insomnia
+version=2020.5.2
+revision=1
+archs="x86_64"
+hostmakedepends="tar xz"
+depends="xdg-utils"
+short_desc="API Client and Design Platform for GraphQL and REST"
+maintainer="Brandon Martin <brandon@codedmart.com>"
+license="MIT"
+homepage="https://insomnia.rest"
+distfiles="https://github.com/Kong/insomnia/releases/download/core@${version}/${pkgname}.Core-${version}.deb"
+checksum=8441ba6087be1c1ce11a2999ec1f675eb0c68ec39d53550d2c530dd98032470e
+nopie=yes
+
+do_extract() {
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${pkgname}.Core-${version}.deb
+	tar xf data.tar.xz
+}
+
+do_install() {
+	vlicense usr/share/doc/insomnia/changelog.gz
+	vinstall usr/share/applications/insomnia.desktop 644 usr/share/applications
+	mkdir ${DESTDIR}/usr/share/icons
+	vcopy usr/share/icons usr/share/icons
+	mkdir ${DESTDIR}/usr/{bin,lib}
+	vcopy opt/Insomnia usr/lib
+  mv ${DESTDIR}/usr/lib/Insomnia ${DESTDIR}/usr/lib/insomnia
+	ln -s ../lib/insomnia/insomnia ${DESTDIR}/usr/bin/insomnia
+}

@@ -1,0 +1,30 @@
+# Template file for 'ttf-mac-fonts'
+pkgname=ttf-mac-fonts
+version=20100901.134
+revision=1
+wrksrc=${pkgname}-${version}
+hostmakedepends=""
+makedepends="subversion wget"
+depends=""
+short_desc="Mac fonts including Lucida Grande, Apple Garamond and other fonts from Apple"
+maintainer="Brandon Martin <brandon@codedmart.com>"
+license="Custom"
+homepage="https://www.apple.com/safari/"
+repository="nonfree"
+font_dirs="/usr/share/fonts/TTF"
+build_style=meta
+
+do_fetch() {
+  svn checkout https://svn.code.sf.net/p/macbuntu/code/Macbuntu/fonts/ ${wrksrc}
+  wget http://images.apple.com/legal/sla/docs/SafariWindows.pdf -P $wrksrc
+}
+
+do_install() {
+  vmkdir usr/share/fonts/TTF
+  vmkdir usr/share/fonts/Type1
+  install -m644 ${wrksrc}/gbk/*.ttf ${DESTDIR}/usr/share/fonts/TTF
+  install -m644 ${wrksrc}/mac/*.ttf ${DESTDIR}/usr/share/fonts/TTF
+  install -m644 ${wrksrc}/mac/*.pfb ${DESTDIR}/usr/share/fonts/Type1
+
+  vinstall ${wrksrc}/SafariWindows.pdf 644 usr/share/licenses/${pkgname}/
+}

@@ -1,0 +1,37 @@
+# Template file for 'otf-san-francisco'
+pkgname=otf-san-francisco
+version=1.0
+revision=1
+wrksrc=${pkgname}-${version}
+hostmakedepends=""
+makedepends="cpio unzip wget xar"
+depends=""
+short_desc="The system font for macOS, iOS, watchOS, and tvOS"
+maintainer="Brandon Martin <brandon@codedmart.com>"
+license="Custom"
+homepage="https://developer.apple.com/fonts/"
+# distfiles="https://developer.apple.com/fonts/downloads/SFPro.zip"
+# checksum="1235856837d0123a4ea3f434933381c90f808e0e05e04af965c873a5d7ce3bd6"
+repository="nonfree"
+font_dirs="/usr/share/fonts/OTF"
+# build_style=meta
+
+do_fetch() {
+  wget https://developer.apple.com/fonts/downloads/SFPro.zip -P ${wrksrc}
+  cd ${wrksrc}
+  mkdir -p pkg
+  unzip SFPro.zip
+  xar -xf SFPro/'San Francisco Pro.pkg' -C pkg
+  cd pkg/'San Francisco Pro.pkg'
+  gzip -d Payload -c | cpio -i
+}
+
+do_install() {
+  vmkdir usr/share/fonts/OTF
+
+  install -d ${DESTDIR}/usr/share/fonts/OTF/
+  install -m644 ${wrksrc}/pkg/'San Francisco Pro.pkg'/Library/Fonts/*.otf ${DESTDIR}/usr/share/fonts/OTF/
+
+  install -d ${DESTDIR}/usr/share/licenses/${pkgname}/
+  install -m644 ${wrksrc}/SFPro/'SF Pro Font License.rtf' ${DESTDIR}/usr/share/licenses/${pkgname}/LICENSE.rtf
+}
