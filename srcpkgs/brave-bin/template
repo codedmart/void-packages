@@ -1,0 +1,35 @@
+# Template file for 'brave-bin'
+pkgname=brave-bin
+_pkgrealname=brave
+version=1.18.78
+revision=1
+wrksrc=${_pkgrealname}-${version}
+hostmakedepends=""
+makedepends="bsdtar"
+depends="libexif hwids desktop-file-utils hicolor-icon-theme xdg-utils"
+short_desc="Web browser that blocks ads and trackers by default (binary release)"
+maintainer="Brandon Martin <brandon@codedmart.com>"
+license="custom"
+homepage="https://brave.com"
+distfiles="https://github.com/brave/brave-browser/releases/download/v${version}/${_pkgrealname}-browser-${version}-linux-amd64.zip"
+checksum="64518ab54608f667aabc8c6d9e20feaf0ab489b04e9f21dd8fcf353e4ad388c4"
+
+do_extract() {
+  mkdir -p brave
+  cat ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${_pkgrealname}-browser-${version}-linux-amd64.zip | bsdtar -xf- -C brave
+  chmod +x brave/brave
+}
+
+do_install() {
+  install -d -m0755 ${DESTDIR}/usr/lib
+  cp -a --reflink=auto $_pkgrealname ${DESTDIR}/usr/lib/${pkgname}
+
+  # allow firejail users to get the suid sandbox working
+  chmod 4755 ${DESTDIR}/usr/lib/brave-bin/chrome-sandbox
+
+  install -Dm0755 ${FILESDIR}/${pkgname}.sh ${DESTDIR}/usr/bin/brave
+  install -Dm0644 ${FILESDIR}/brave-browser.desktop ${DESTDIR}/usr/share/applications/brave-browser.desktop
+  install -Dm0644 ${FILESDIR}/logo.png ${DESTDIR}/usr/share/pixmaps/brave.png
+  install -Dm0664 ${FILESDIR}/MPL2 ${DESTDIR}/usr/share/licenses/${pkgname}/MPL2
+  mv ${DESTDIR}/usr/lib/${pkgname}/LICENSE ${DESTDIR}/usr/share/licenses/${pkgname}
+}
