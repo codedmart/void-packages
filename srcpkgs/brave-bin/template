@@ -1,7 +1,7 @@
 # Template file for 'brave-bin'
 pkgname=brave-bin
 _pkgrealname=brave
-version=1.18.78
+version=1.20.100
 revision=1
 wrksrc=${_pkgrealname}-${version}
 hostmakedepends=""
@@ -12,7 +12,7 @@ maintainer="Brandon Martin <brandon@codedmart.com>"
 license="custom"
 homepage="https://brave.com"
 distfiles="https://github.com/brave/brave-browser/releases/download/v${version}/${_pkgrealname}-browser-${version}-linux-amd64.zip"
-checksum="64518ab54608f667aabc8c6d9e20feaf0ab489b04e9f21dd8fcf353e4ad388c4"
+checksum="ad781db2a0fbc620473fed6dfffef8e8375da7d82d6cf3e1eea0b21293388b0e"
 
 do_extract() {
   mkdir -p brave

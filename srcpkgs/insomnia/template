@@ -21,9 +21,7 @@ do_extract() {
 do_install() {
 	vlicense usr/share/doc/insomnia/changelog.gz
 	vinstall usr/share/applications/insomnia.desktop 644 usr/share/applications
-	mkdir ${DESTDIR}/usr/share/icons
 	vcopy usr/share/icons usr/share/icons
-	mkdir ${DESTDIR}/usr/{bin,lib}
 	vcopy opt/Insomnia usr/lib
   mv ${DESTDIR}/usr/lib/Insomnia ${DESTDIR}/usr/lib/insomnia
 	ln -s ../lib/insomnia/insomnia ${DESTDIR}/usr/bin/insomnia
