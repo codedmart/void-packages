@@ -1,0 +1,24 @@
+# Template file for 'librewolf'
+
+pkgname=librewolf-bin
+_pkgname=librewolf
+version=85.0
+revision=1
+short_desc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
+archs="x86_64"
+license="MPL GPL LGPL"
+homepage="https://librewolf-community.gitlab.io/"
+maintainer="Brandon Martin <brandon@codedmart.com"
+hostmakedepends="tar zstd"
+depends="nss>=3.60 desktop-file-utils hicolor-icon-theme"
+_uploadh_x86_64='948e253c75e3bc793491c8ad68a27024'
+distfiles="https://gitlab.com/${_pkgname}-community/browser/linux/uploads/${_uploadh_x86_64}/${_pkgname}-${version}-${revision}-x86_64.pkg.tar.zst"
+checksum=7a1c5ee39bdaa7ecb6f14be11712a9920788a021ca2a2d97788394d230df7a44
+
+do_extract () {
+  tar -I zstd -xvf ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${_pkgname}-${version}-${revision}-x86_64.pkg.tar.zst
+}
+
+do_install() {
+  vcopy usr /
+}
