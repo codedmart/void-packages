@@ -1,0 +1,28 @@
+# Maintainer: Brandon Martin <brandon@codedmart.com>
+pkgname=pgloader
+version=3.6.2
+revision=1
+homepage="http://pgloader.io/"
+short_desc="A data loading tool for PostgreSQL, using the COPY command."
+maintiner="Brandon Martin <brandon@codedmart.com>"
+archs="x86_64"
+hostmakedepends="ccl curl freetds-devel gawk libressl-devel sbcl sqlite-devel unzip zlib-devel"
+depends="freetds zlib"
+create_wrksrc=yes
+license="custom:PostgreSQL"
+distfiles="https://github.com/dimitri/$pkgname/archive/v$version.tar.gz"
+checksum=33f87df9cb8f9a36f9836cd691ad6dfa72ae76200a12fe01ee89584f3b771ae7
+disable_parallel_builds=yes
+nostrip=yes
+nopie=yes
+
+do_build() {
+    cd ${pkgname}-${version}
+    make
+}
+
+do_install() {
+    cd ${pkgname}-${version}
+    vlicense LICENSE
+    vbin build/bin/pgloader
+}
