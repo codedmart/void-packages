@@ -1,6 +1,6 @@
 # Template file for 'insomnia'
 pkgname=insomnia
-version=2020.5.2
+version=2021.2.0
 revision=1
 archs="x86_64"
 hostmakedepends="tar xz"
@@ -10,7 +10,7 @@ maintainer="Brandon Martin <brandon@codedmart.com>"
 license="MIT"
 homepage="https://insomnia.rest"
 distfiles="https://github.com/Kong/insomnia/releases/download/core@${version}/${pkgname}.Core-${version}.deb"
-checksum=8441ba6087be1c1ce11a2999ec1f675eb0c68ec39d53550d2c530dd98032470e
+checksum=aa3ca967d6dbcd0495d9111c1d90e0427b9f9be5192068d04782b59be822e8ec
 nopie=yes
 
 do_extract() {
@@ -24,5 +24,6 @@ do_install() {
 	vcopy usr/share/icons usr/share/icons
 	vcopy opt/Insomnia usr/lib
   mv ${DESTDIR}/usr/lib/Insomnia ${DESTDIR}/usr/lib/insomnia
+	vmkdir usr/bin
 	ln -s ../lib/insomnia/insomnia ${DESTDIR}/usr/bin/insomnia
 }
