@@ -1,7 +1,7 @@
 # Template file for 'libreoffice'
 pkgname=libreoffice
 version=7.1.0.3
-revision=1
+revision=2
 build_style=meta
 make_build_args="build-nocheck"
 nocross="Several dependencies are nocross=yes"
@@ -44,7 +44,7 @@ depends+=" libreoffice-i18n-it>=${version}_${revision}"
 depends+=" libreoffice-i18n-pl>=${version}_${revision}"
 depends+=" libreoffice-i18n-pt>=${version}_${revision}"
 short_desc="Productivity suite"
-maintainer="Jürgen Buchmüller <pullmoll@t-online.de>"
+maintainer="Orphaned <orphan@voidlinux.org>"
 license="GPL-3.0-or-later"
 homepage="https://www.libreoffice.org/"
 
