@@ -1,6 +1,6 @@
 # Template file for 'stripe-cli'
 pkgname=stripe-cli
-version=1.5.13
+version=1.5.14
 revision=1
 archs="x86_64"
 hostmakedepends=""
@@ -11,7 +11,7 @@ maintainer="Brandon Martin <brandon@codedmart.com>"
 license="Apache"
 homepage="https://stripe.com/docs/stripe-cli"
 distfiles="https://github.com/stripe/stripe-cli/releases/download/v${version}/stripe_${version}_linux_x86_64.tar.gz"
-checksum=7e59edbcb712e027891b2428905b1651d1eb1fefc5c1d12a6f026755495cdf0f
+checksum=b45a79c40be706dee651ba59da6be5f0826de71ab1c20270681efbbf6140b21d
 repository="nonfree"
 
 do_install() {
