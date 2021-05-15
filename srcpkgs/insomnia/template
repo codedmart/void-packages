@@ -1,6 +1,6 @@
 # Template file for 'insomnia'
 pkgname=insomnia
-version=2021.2.2
+version=2021.3.0
 revision=1
 archs="x86_64"
 hostmakedepends="tar xz"
@@ -10,7 +10,7 @@ maintainer="Brandon Martin <brandon@codedmart.com>"
 license="MIT"
 homepage="https://insomnia.rest"
 distfiles="https://github.com/Kong/insomnia/releases/download/core@${version}/${pkgname}.Core-${version}.deb"
-checksum=49c448472fefb9860b28b981245715319730bbfc6f69a385ac06dc2e8a9d735c
+checksum=46d1245a2d09de76334fe22177206519e504d920a68659dfc342fab0ebc4e162
 nopie=yes
 
 do_extract() {
