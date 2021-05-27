@@ -519,6 +519,7 @@ libicui18n.so.67 icu-libs-67.1_1
 libicudata.so.67 icu-libs-67.1_1
 libicutu.so.67 icu-libs-67.1_1
 libicuuc.so.67 icu-libs-67.1_1
+libicutest.so.67 icu-libs-67.1_1
 libaspell.so.15 libaspell-0.60.8_2
 libpspell.so.15 libaspell-0.60.8_2
 libenchant.so.1 enchant-1.4.2_1
@@ -531,8 +532,6 @@ libsoup-gnome-2.4.so.1 libsoup-gnome-2.34.0_1
 libgnome-panel.so.0 gnome-panel-3.37.1_1
 libuninum.so.5 libuninum-2.7_1
 libunique-3.0.so.0 libunique-2.91.4_1
-libwebkitgtk-3.0.so.0 webkitgtk-2.4.11_7
-libjavascriptcoregtk-3.0.so.0 webkitgtk-2.4.11_7
 libwebkit2gtk-4.0.so.37 webkit2gtk-2.6.2_1
 libjavascriptcoregtk-4.0.so.18 webkit2gtk-2.6.2_1
 libgimp-2.0.so.0 libgimp-2.10.0_1
