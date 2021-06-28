@@ -1,6 +1,6 @@
 # Template file for 'kwayland-server'
 pkgname=kwayland-server
-version=5.22.0
+version=5.22.2
 revision=1
 build_style=cmake
 build_helper="qemu"
@@ -13,7 +13,7 @@ maintainer="John <me@johnnynator.dev>"
 license="GPL-3.0-or-later"
 homepage="https://invent.kde.org/plasma/kwayland-server"
 distfiles="${KDE_SITE}/plasma/${version}/${pkgname}-${version}.tar.xz"
-checksum=84617871c47f7e5060462728a82bfcdad14fd0bb2f1f8252bee077e28deb1694
+checksum=8cf8cf985e44abf1441e8f613ccfcce9dc68160c9c0557c4f9f0b17f4a22bcaa
 
 kwayland-server-devel_package() {
 	depends="${sourcepkg}>=${version}_${revision}"
